@@ -201,6 +201,4 @@ print("accuracy: ",accuracy)
 print("precision: ",precision)
 print("recall: ",recall)
 print("F1 score: ",f1)
-print("Predictions:", all_predictions)
-print("Labels:", all_labels)
 
