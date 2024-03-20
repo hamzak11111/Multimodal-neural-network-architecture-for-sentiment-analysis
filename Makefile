@@ -4,6 +4,9 @@ install:
 train:
 	python main.py
 
+test:
+	python -m unittest test.py
+
 image:
 	docker build image 
 
