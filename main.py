@@ -132,7 +132,7 @@ class MultimodalModel(nn.Module):
         output = torch.sigmoid(fusion)
 
         return output.squeeze()
-    
+
 
 model = MultimodalModel(image_dim=512, text_dim=300, hidden_dim=256)
 
@@ -140,7 +140,8 @@ model = MultimodalModel(image_dim=512, text_dim=300, hidden_dim=256)
 criterion = nn.BCELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.005)
 
-dataset = TensorDataset(train_caption_image,train_caption_word,train_caption_label)
+dataset = TensorDataset(train_caption_image, train_caption_word,
+                        train_caption_label)
 batch_size = 500
 dataloader = DataLoader(dataset, batch_size=batch_size)
 num_epochs = 15
@@ -165,7 +166,8 @@ torch.save(model.state_dict(), "model.pt")
 model = MultimodalModel(image_dim=512, text_dim=300, hidden_dim=256)
 model.load_state_dict(torch.load("model.pt"))
 
-dataset = TensorDataset(test_caption_image, test_caption_word, torch.tensor(test_caption["sentiment"].values))
+dataset = TensorDataset(test_caption_image, test_caption_word,
+                        torch.tensor(test_caption["sentiment"].values))
 batch_size = 100
 val_data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=False)
 
@@ -193,4 +195,3 @@ print("accuracy: ", accuracy)
 print("precision: ", precision)
 print("recall: ", recall)
 print("F1 score: ", f1)
-
