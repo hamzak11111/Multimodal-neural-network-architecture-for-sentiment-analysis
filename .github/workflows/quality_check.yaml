@@ -1,0 +1,26 @@
+name: Code Quality Check
+
+on:
+  push:
+    branches:
+      - hamza
+
+jobs:
+  quality_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: |
+          make install
+
+      - name: Run Flake8
+        run: |
+          flake8
