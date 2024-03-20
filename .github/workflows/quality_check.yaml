@@ -3,7 +3,7 @@ name: Code Quality Check
 on:
   push:
     branches:
-      - hamza
+      - dev
 
 jobs:
   quality_check:
