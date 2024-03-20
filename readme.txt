@@ -1,1 +1,0 @@
-simple execute the code.ipynb file to see results

@@ -1,0 +1,8 @@
+pandas
+nltk
+torch
+scikit-learn
+sklearn
+gensim
+Pillow
+flake8
