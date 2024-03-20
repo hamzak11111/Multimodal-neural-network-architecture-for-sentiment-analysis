@@ -3,6 +3,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+
 class MultimodalModel(nn.Module):
     def __init__(self, image_dim, text_dim, hidden_dim):
         super(MultimodalModel, self).__init__()
@@ -26,6 +27,7 @@ class MultimodalModel(nn.Module):
 
         return output.squeeze()
 
+
 class TestMultimodalModel(unittest.TestCase):
     def setUp(self):
         self.model = MultimodalModel(image_dim=100, text_dim=50, hidden_dim=64)
@@ -36,11 +38,11 @@ class TestMultimodalModel(unittest.TestCase):
         pass
 
     def test_forward(self):
-        image = torch.randn(32, 100) 
-        text = torch.randn(32, 50) 
+        image = torch.randn(32, 100)
+        text = torch.randn(32, 50)
         output = self.model(image, text)
-        
         self.assertTrue(torch.all(output >= 0) and torch.all(output <= 1))
+
 
 if __name__ == '__main__':
     unittest.main()
