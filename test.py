@@ -30,7 +30,8 @@ class MultimodalModel(nn.Module):
 
 class TestMultimodalModel(unittest.TestCase):
     def setUp(self):
-        self.model = MultimodalModel(image_dim=100, text_dim=50, hidden_dim=64)
+        self.model = MultimodalModel(image_dim=512, text_dim=300,
+                                     hidden_dim=256)
         self.model.load_state_dict(torch.load("model.pt"))
         self.model.eval()
 
@@ -38,9 +39,12 @@ class TestMultimodalModel(unittest.TestCase):
         pass
 
     def test_forward(self):
-        image = torch.randn(32, 100)
-        text = torch.randn(32, 50)
+        image = torch.randn(32, 512)
+        text = torch.randn(32, 300)
         output = self.model(image, text)
+        output = self.model(image, text)
+
+        self.assertEqual(output.shape, torch.Size([32]))
         self.assertTrue(torch.all(output >= 0) and torch.all(output <= 1))
 
 
