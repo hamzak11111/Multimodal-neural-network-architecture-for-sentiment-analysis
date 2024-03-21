@@ -8,7 +8,7 @@ pipeline {
             }
         }
 
-        stage('Containerize and Push to Docker Hub') {
+        stage('Build Image') {
             steps {
                 bat 'docker build -t doc_image .'
             }
