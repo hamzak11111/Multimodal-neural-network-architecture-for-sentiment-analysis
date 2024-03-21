@@ -16,7 +16,9 @@ pipeline {
 
         stage('Push to Docker Hub') {
             steps {
-                bat 'docker push doc_image'
+
+                bat 'docker tag doc_image hamzak11111/mlops_assignment_1:first_tag'
+                bat 'docker push hamzak11111/mlops_assignment_1:first_tag'
             }
         }
     }
