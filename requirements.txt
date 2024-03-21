@@ -6,3 +6,4 @@ gensim
 Pillow
 pytest
 flake8
+flask
