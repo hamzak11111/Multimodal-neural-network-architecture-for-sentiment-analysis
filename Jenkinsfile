@@ -8,22 +8,15 @@ pipeline {
             }
         }
 
-        stage('Containerize and Push to Docker Hub') 
-        {
+        stage('Containerize and Push to Docker Hub') {
             steps {
-                script
-                {
-                    sh 'docker build -t doc_image .'
-                }
+                bat 'docker build -t doc_image .'
             }
         }
-         stage('Push to Docker Hub') 
-        {
+
+        stage('Push to Docker Hub') {
             steps {
-                script 
-                {
-                    sh 'docker push doc_image'
-                }
+                bat 'docker push doc_image'
             }
         }
     }
