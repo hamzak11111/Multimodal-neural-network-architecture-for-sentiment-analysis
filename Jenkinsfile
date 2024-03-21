@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials')
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -12,17 +8,21 @@ pipeline {
             }
         }
 
-        stage('Containerize and Push to Docker Hub') {
+        stage('Containerize and Push to Docker Hub') 
+        {
             steps {
-                script {
+                script
+                {
                     sh 'docker build -t doc_image .'
                 }
-
-                script {
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_HUB_CREDENTIALS)
-                    {
-                        sh 'docker push doc_image'
-                    }
+            }
+        }
+         stage('Push to Docker Hub') 
+        {
+            steps {
+                script 
+                {
+                    sh 'docker push doc_image'
                 }
             }
         }
