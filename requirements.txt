@@ -4,5 +4,6 @@ torch
 scikit-learn
 gensim
 Pillow
-flake8
 pytest
+flake8
+flask
