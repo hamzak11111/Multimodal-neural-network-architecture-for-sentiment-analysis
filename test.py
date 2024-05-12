@@ -35,9 +35,6 @@ class TestMultimodalModel(unittest.TestCase):
         self.model.load_state_dict(torch.load("model.pt"))
         self.model.eval()
 
-    def tearDown(self):
-        pass
-
     def test_forward(self):
         image = torch.randn(32, 512)
         text = torch.randn(32, 300)
