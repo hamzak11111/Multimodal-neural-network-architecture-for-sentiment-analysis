@@ -151,7 +151,7 @@ for epoch in range(num_epochs):
     for image, text, label in dataloader:
         optimizer.zero_grad()
 
-        # forward pass
+        # forward passs
         output = model(image, text)
 
         # calculate loss
